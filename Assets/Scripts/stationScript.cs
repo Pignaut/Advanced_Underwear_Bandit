@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class stationScript : MonoBehaviour {
 
-	private bool showGUI;
+	private bool showGUI =  false;
 	private GameObject player;
 	private MoveVehicle mov;
-
-	//public Canvas canv;
-
-	//bool showing;
 	private canMouseLook myCam;
 
 	// Use this for initialization
@@ -20,31 +16,25 @@ public class stationScript : MonoBehaviour {
 	{
 		player = GameObject.FindGameObjectWithTag ("Player");
 		mov = player.GetComponent<MoveVehicle> ();
-
-		//showing = false;
-
-		//canv = player.GetComponent<Canvas> ();
-
-		myCam = player.GetComponent<canMouseLook> ();
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Rotate (Vector3.up * (Time.deltaTime) * 2);
+		transform.Rotate (Vector3.forward * (Time.deltaTime) * 2);
 	}
 
 	void OnTriggerEnter (Collider _collision)
 	{
-		Debug.Log ("Entered station area");
-		showGUI = true;
-		mov.setShowGUI (showGUI);
+			Debug.Log ("Entered station area");
+			showGUI = true;
+			mov.setShowGUI (showGUI);
 	}
 
 	void OnTriggerExit (Collider _collision)
 	{
-		Debug.Log ("Exited station area");
-		showGUI = false;
-		mov.setShowGUI (showGUI);
+			Debug.Log ("Exited station area");
+			showGUI = false;
+			mov.setShowGUI (showGUI);
 	}
 }

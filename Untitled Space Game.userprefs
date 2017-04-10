@@ -1,11 +1,14 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MoveVehicle.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\FPS\Move.cs">
     <Files>
-      <File FileName="Assets\Scripts\MoveVehicle.cs" Line="26" Column="10" />
+      <File FileName="Assets\Scripts\MoveVehicle.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\characterController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\canMouseLook.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\stationScript.cs" Line="44" Column="42" />
+      <File FileName="Assets\Scripts\canMouseLook.cs" Line="4" Column="1" />
+      <File FileName="Assets\Scripts\stationScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Shop.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\FPS\Look.cs" Line="6" Column="20" />
+      <File FileName="Assets\Scripts\FPS\Move.cs" Line="6" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

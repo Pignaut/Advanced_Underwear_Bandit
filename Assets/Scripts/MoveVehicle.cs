@@ -2,34 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveVehicle : MonoBehaviour {
+
 
 	public NavMeshAgent agent;
 	private RaycastHit hit;
 	private Vector3 Destination;
 	private Vector3 startLoc;
 
+	static public float pX;
+	static public float pY;
+	static public float pZ;
+
 	private bool showGUI;
-	bool showing;
 
-	public Canvas canv;
 	private MoveVehicle mov;
-	private canMouseLook myCam;
-
+	public canMouseLook myCam;
 
 
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
+		mov = GameObject.FindGameObjectWithTag ("Player").GetComponent<MoveVehicle> ();
+		myCam = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<canMouseLook> ();
 
-		canv = GetComponent<Canvas> ();
+		Debug.Log ("showGUI: " + showGUI);
+
+		this.transform.position = new Vector3 (pX, pY, pZ);
+		myCam.transform.position = new Vector3 (pX, myCam.transform.position.y, (pZ - 2));
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		//if (Input.GetButton ("Fire1"))
+		
 		if(Input.GetMouseButtonDown(0))
 		{
 			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
@@ -41,7 +48,6 @@ public class MoveVehicle : MonoBehaviour {
 				Destination.z = hit.point.z;
 
 				agent.transform.LookAt (Destination);
-
 				agent.SetDestination (Destination);
 			}
 		}
@@ -60,9 +66,10 @@ public class MoveVehicle : MonoBehaviour {
 			{
 				agent.SetDestination (transform.position);
 
-				showing = true;
+				savePosition ();
+				loadPosition ();
 
-				canv.gameObject.SetActive (showing);
+				SceneManager.LoadScene ("stationMenu", UnityEngine.SceneManagement.LoadSceneMode.Single);
 
 				mov.enabled = !mov.enabled;
 				myCam.enabled = !myCam.enabled;
@@ -70,5 +77,18 @@ public class MoveVehicle : MonoBehaviour {
 		}
 	}
 
+	void savePosition()
+	{
+		PlayerPrefs.SetFloat ("p_X", transform.position.x);
+		PlayerPrefs.SetFloat ("p_Y", transform.position.y);
+		PlayerPrefs.SetFloat ("p_Z", transform.position.z);
+	}
+
+	void loadPosition()
+	{
+		pX = PlayerPrefs.GetFloat ("p_X");
+		pY = PlayerPrefs.GetFloat ("p_Y");
+		pZ = PlayerPrefs.GetFloat ("p_Z");
+	}
 
 }
