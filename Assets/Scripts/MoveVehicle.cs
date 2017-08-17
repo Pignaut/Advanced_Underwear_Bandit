@@ -10,11 +10,8 @@ public class MoveVehicle : MonoBehaviour {
 	public NavMeshAgent agent;
 	private RaycastHit hit;
 	private Vector3 Destination;
-	private Vector3 startLoc;
 
-	static public float pX;
-	static public float pY;
-	static public float pZ;
+	static public float pX, pY, pZ;
 
 	private bool showGUI;
 
@@ -27,8 +24,6 @@ public class MoveVehicle : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent> ();
 		mov = GameObject.FindGameObjectWithTag ("Player").GetComponent<MoveVehicle> ();
 		myCam = GameObject.FindGameObjectWithTag ("MainCamera").GetComponent<canMouseLook> ();
-
-		Debug.Log ("showGUI: " + showGUI);
 
 		this.transform.position = new Vector3 (pX, pY, pZ);
 		myCam.transform.position = new Vector3 (pX, myCam.transform.position.y, (pZ - 2));
