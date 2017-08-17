@@ -1,5 +1,7 @@
 # Advanced_Underwear_Bandit
 
+Repo name courtesy of https://videogamena.me
+
 - Set in space
 - Top-down
 - Mouse-click movement
